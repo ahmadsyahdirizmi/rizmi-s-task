@@ -3,6 +3,6 @@ Progres 1
   - client search for available BLE server
   - choose ESP32 BLE server and connect
   - send generated passkey in client to ESP32 BLE server
-  - ESP32 BLE server get generated passkey form client via characteristic
+  - ESP32 BLE server get generated passkey from client via characteristic
   - Compare generated passkey from client and from ESP32 itself
   - if same, print authenticated to screen
