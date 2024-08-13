@@ -1,0 +1,261 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "API BLE Server for SURIOTA Gateway\n\nService UUID: \"4fafc201-1fb5-459e-8fcc-c5c9c331914b\"\nCharacteristic UUID 1: \"beb5483e-36e1-4688-b7f5-ea07361b26a8\"\nCharacteristic UUID 2: \"aeb5483e-36e1-4688-b7f5-ea07361b26b9\"\nCharacteristic UUID 3: \"ceb5483e-36e1-4688-b7f5-ea07361b26c0\"\nCharacteristic UUID 4: \"deb5483e-36e1-4688-b7f5-ea07361b26d1\"",
+    "version": "V1.0.0",
+    "title": "SURIOTA Gateway"
+  },
+  "host": "localhost:5000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Data Interface Config",
+      "description": "UUID: beb5483e-36e1-4688-b7f5-ea07361b26a8"
+    },
+    {
+      "name": "Communication Interface Config",
+      "description": "UUID: aeb5483e-36e1-4688-b7f5-ea07361b26b9"
+    },
+    {
+      "name": "Data Store Config",
+      "description": "UUID: ceb5483e-36e1-4688-b7f5-ea07361b26c0"
+    },
+    {
+      "name": "Logging",
+      "description": "UUID: deb5483e-36e1-4688-b7f5-ea07361b26d1"
+    }
+  ],
+  "paths": {
+    "/ble/data_interface/read": {
+      "get": {
+        "tags": ["Data Interface Config"],
+        "summary": "Read Data Interface Config",
+        "description": "Retrieve the current configuration of the data interface.",
+        "responses": {
+          "200": {
+            "description": "The data interface configuration",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "type_connection": {"type": "string"},
+                "data_type": {"type": "string"},
+                "id": {"type": "integer"},
+                "address": {"type": "string"},
+                "value": {"type": "string"}
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/ble/data_interface/write": {
+      "post": {
+        "tags": ["Data Interface Config"],
+        "summary": "Write Data Interface Config",
+        "description": "Update the data interface configuration.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Data interface configuration",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "type_connection": {"type": "string"},
+                "data_type": {"type": "string"},
+                "id": {"type": "integer"},
+                "address": {"type": "string"},
+                "value": {"type": "string"}
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Data interface config updated"
+          },
+          "400": {
+            "description": "Invalid data"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/ble/comm_interface/read": {
+      "get": {
+        "tags": ["Communication Interface Config"],
+        "summary": "Read Communication Interface Config",
+        "description": "Retrieve the current configuration of the communication interface.",
+        "responses": {
+          "200": {
+            "description": "The communication interface configuration",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "connection_method": {"type": "string"},
+                "mac_address": {"type": "string"},
+                "ip_address": {"type": "string"}
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/ble/comm_interface/write": {
+      "post": {
+        "tags": ["Communication Interface Config"],
+        "summary": "Write Communication Interface Config",
+        "description": "Update the communication interface configuration.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Communication interface configuration",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "connection_method": {"type": "string"},
+                "mac_address": {"type": "string"},
+                "ip_address": {"type": "string"}
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Communication interface config updated"
+          },
+          "400": {
+            "description": "Invalid data"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/ble/data_store/read": {
+      "get": {
+        "tags": ["Data Store Config"],
+        "summary": "Read Data Store Config",
+        "description": "Retrieve the current configuration of the data store.",
+        "responses": {
+          "200": {
+            "description": "The data store configuration",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "storage_method": {"type": "string"},
+                "mqtt_broker": {"type": "string"},
+                "mqtt_topic": {"type": "string"}
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/ble/data_store/write": {
+      "post": {
+        "tags": ["Data Store Config"],
+        "summary": "Write Data Store Config",
+        "description": "Update the data store configuration.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Data store configuration",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "storage_method": {"type": "string"},
+                "mqtt_broker": {"type": "string"},
+                "mqtt_topic": {"type": "string"}
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Data store config updated"
+          },
+          "400": {
+            "description": "Invalid data"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/ble/logging/read": {
+      "get": {
+        "tags": ["Logging"],
+        "summary": "Read Logging Config",
+        "description": "Retrieve the current logging configuration.",
+        "responses": {
+          "200": {
+            "description": "The logging configuration",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "log_type": {"type": "string"},
+                "log_interval": {"type": "string"}
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/ble/logging/write": {
+      "post": {
+        "tags": ["Logging"],
+        "summary": "Write Logging Config",
+        "description": "Update the logging configuration.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Logging configuration",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "log_type": {"type": "string"},
+                "log_interval": {"type": "string"}
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Logging config updated"
+          },
+          "400": {
+            "description": "Invalid data"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  }
+}
+
