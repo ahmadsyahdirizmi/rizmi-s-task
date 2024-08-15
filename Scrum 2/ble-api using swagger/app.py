@@ -67,7 +67,7 @@ def write_data_store():
 def read_logging():
     data = {
         "log_type": "Data",
-        "log_interval": "10 minutes"
+        "log_interval": 60000000
     }
     return jsonify(data)
 
