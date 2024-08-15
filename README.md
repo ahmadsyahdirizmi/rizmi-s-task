@@ -23,7 +23,7 @@
 ## Progress 3: Authentication with AES CBC Encryption
 
 - **Steps Followed**: All previous steps from Progress 2 are repeated.
-- **Client Reconnection**: The client reruns the Python code and selects the ESP32 BLE server.
+- **Client Reconnection**: Reruns the Python code(client) and selects the ESP32 BLE server.
 - **Data Encryption**: The client encrypts data using AES-128 in CBC mode before attempting to connect to the server.
 - **Data Transmission**: Upon successful connection, the client sends the encrypted data to the ESP32 BLE server.
 - **Data Decryption**: The ESP32 BLE server decrypts the received data.
