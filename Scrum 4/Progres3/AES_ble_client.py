@@ -77,22 +77,36 @@ async def main():
     encrypted_data = encrypt_data(json_data)
     print(f"Encrypted Data: {encrypted_data}")
 
-    # Connect to the BLE device and send the encrypted data
-    async with BleakClient(selected_device) as client:
-        # Check if the connection is established before sending data
-        if client.is_connected:
-            print("Connection established. Preparing to send data...")
-            
-            # Wait a moment to ensure that the connection is fully established and secured
-            await asyncio.sleep(5)
-            
-            # Send the encrypted data to the characteristic
-            characteristic_uuid = "beb5483e-36e1-4688-b7f5-ea07361b26a8"
-            await client.write_gatt_char(characteristic_uuid, encrypted_data.encode('utf-8'))
+   # Attempt to connect to the BLE device and send data
+    try:
+        async with BleakClient(selected_device) as client:
+            print(f"Connected to {selected_device.name}")
 
-            print("Data sent successfully.")
-        else:
-            print("Failed to connect to the device.")
+            # Wait for the device to prompt for a passkey and authenticate
+            print("Waiting for passkey authentication...")
+            paired = False
+            while not paired:
+                if client.is_connected:
+                    paired = True
+                else:
+                    print("Client disconnected. Reconnecting...")
+                    await client.connect()
+                    await asyncio.sleep(1)
+
+            command = int(input("Is your device authenticated? If yes, please press 1 to write the data: "))
+            if command == 1:
+                print("Device authenticated. Sending encrypted data...")
+                characteristic_uuid = "beb5483e-36e1-4688-b7f5-ea07361b26a8"
+                await client.write_gatt_char(characteristic_uuid, encrypted_data.encode('utf-8'))
+
+                print("Data sent successfully.")
+            else:
+                print("Command not recognized. Aborting operation.")
+                
+    except BleakError as e:
+        print(f"Could not connect to device: {e}")
+        print("Ensure that the device is paired and that it requires no additional authentication steps.")
+
 
 if __name__ == "__main__":
     asyncio.run(main())
