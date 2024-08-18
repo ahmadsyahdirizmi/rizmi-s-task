@@ -11,8 +11,8 @@
 unsigned char aes_key[16] = {'B', 'a', 'n', 'd', 'u', 'n', 'g', ' ', 'B', 'o', 'n', 'd', 'o', 'w', 'o', 's'};
 unsigned char iv[16] = {'b', 'a', 'n', 'd', 'u', 'n', 'g', ' ', 'b', 'o', 'n', 'd', 'o', 'w', 'o', 's'};
 
-const char* ssid = "UmmuHadi-2F";
-const char* password = "238988rizami";
+const char* ssid = "Wi-Fi SSID";
+const char* password = "Wi-Fi Password";
 const char* secretKey = "SURIOTA";
 
 uint32_t PASSKEY;
