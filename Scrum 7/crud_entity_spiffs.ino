@@ -4,8 +4,8 @@
 #include <time.h>
 
 // Konfigurasi Wi-Fi
-const char* ssid = "UmmuHadi-2F";
-const char* password = "238988rizami";
+const char* ssid = "Wi-Fi SSID";
+const char* password = "Wi-Fi Password";
 
 // UUIDs yang tersedia
 const char* uuid1 = "123e4567-e89b-12d3-a456-426614174000";
