@@ -29,14 +29,15 @@
 - **Data Decryption**: The ESP32 BLE server decrypts the received data.
 - **Output**: The decrypted data is written to the serial monitor for verification.
 
-# SCRUM 7 
+# SCRUM 7
 
-- **Inisialisasi**: ESP32 terhubung ke Wi-Fi dan sinkronisasi waktu via NTP.
-- **Perintah Serial**:
-  - `a`: Tambah data JSON baru.
-  - `r`: Baca dan tampilkan isi file JSON.
-  - `e`: Hapus objek JSON berdasarkan UUID dan timestamp.
-  - `d`: Hapus seluruh file JSON.
-- **Proses Menambahkan Data**: Pilih UUID dan tambahkan data sesuai dengan UUID yang dipilih.
-- **Penghapusan Data**: Hapus objek JSON berdasarkan UUID dan timestamp, atau hapus seluruh file JSON.
+- **Initialization**: ESP32 connects to Wi-Fi and synchronizes time via NTP.
+- **Serial Commands**:
+  - `a`: Add new JSON data.
+  - `r`: Read and display the contents of the JSON file.
+  - `e`: Remove a JSON object based on UUID and timestamp.
+  - `d`: Delete the entire JSON file.
+- **Data Addition Process**: Select a UUID and add data according to the chosen UUID.
+- **Data Deletion**: Remove a JSON object based on UUID and timestamp, or delete the entire JSON file.
+
 
