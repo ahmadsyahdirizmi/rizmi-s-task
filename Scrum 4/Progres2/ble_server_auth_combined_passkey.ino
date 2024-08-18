@@ -6,8 +6,8 @@
 #include "time.h"
 
 // WiFi Credentials
-const char* ssid = "UmmuHadi-2F";
-const char* password = "238988rizami";
+const char* ssid = "Wi-Fi SSID";
+const char* password = "Wi-Fi Password";
 const char* secretKey = "SURIOTA";
 
 uint32_t PASSKEY;
