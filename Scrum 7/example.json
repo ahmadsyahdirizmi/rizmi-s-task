@@ -1,0 +1,42 @@
+{
+  "123e4567-e89b-12d3-a456-426614174000": [
+    {
+      "timestamp": 1724010299,
+      "data": {
+        "type_connection": "RTU",
+        "data_type": "Coils",
+        "id": 2,
+        "address": "0x01",
+        "value": "0xFF"
+      }
+    },
+    {
+      "timestamp": 1724010409,
+      "data": {
+        "type_connection": "RTU",
+        "data_type": "Coils",
+        "id": 3,
+        "address": "0x01",
+        "value": "0xFF"
+      }
+    }
+  ],
+  "223a8299-t98f-a18k-156h-123812938199": [
+    {
+      "timestamp": 1724010299,
+      "data": {
+        "connection_method": "Ethernet",
+        "mac_address": "00:1B:44:11:3A:B7",
+        "ip_address": "192.168.1.100"
+      }
+    },
+    {
+      "timestamp": 1724010677,
+      "data": {
+        "connection_method": "Ethernet",
+        "mac_address": "00:1B:44:11:3A:B7",
+        "ip_address": "192.168.1.100"
+      }
+    }
+  ]
+}
