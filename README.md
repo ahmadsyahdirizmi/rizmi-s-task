@@ -35,7 +35,7 @@
 - **Perintah Serial**:
   - `a`: Tambah data JSON baru.
   - `r`: Baca dan tampilkan isi file JSON.
-  - `e`: Hapus objek JSON berdasarkan timestamp.
+  - `e`: Hapus objek JSON berdasarkan UUID dan timestamp.
   - `d`: Hapus seluruh file JSON.
 - **Proses Menambahkan Data**: Pilih UUID dan tambahkan data sesuai dengan UUID yang dipilih.
 - **Penghapusan Data**: Hapus objek JSON berdasarkan UUID dan timestamp, atau hapus seluruh file JSON.
