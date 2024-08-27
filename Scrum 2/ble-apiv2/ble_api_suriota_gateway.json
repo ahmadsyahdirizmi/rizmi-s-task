@@ -286,8 +286,8 @@
     "/ble/logging/write": {
       "post": {
         "tags": ["Logging"],
-        "summary": "Send the Logging configuration to the client.",
-        "description": "Update the logging configuration.",
+        "summary": "Write Logging Config",
+        "description": "Send the Logging configuration to the client.",
         "parameters": [
           {
             "in": "body",
