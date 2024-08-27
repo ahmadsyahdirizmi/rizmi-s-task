@@ -1,0 +1,57 @@
+{
+  "beb5483e-36e1-4688-b7f5-ea07361b26a8": [
+    {
+      "device_name": "Sensor Environment",
+      "connection_type": "RTU",
+      "baud_rate": 9600,
+      "bit_data": 8,
+      "parity": "N",
+      "stop_bit": 1
+    }
+  ],
+  "aeb5483e-36e1-4688-b7f5-ea07361b26b9": [
+    {
+      "device_name": "Sensor Environment",
+      "slave_id": 1,
+      "function": "INPUT_REGISTERS",
+      "address": "0x0001",
+      "data_name": "Temperature",
+      "data_type": "INT16"
+    },
+    {
+      "device_name": "Sensor Environment",
+      "slave_id": 1,
+      "function": "INPUT_REGISTERS",
+      "address": "0x0002",
+      "data_name": "Humidity",
+      "data_type": "INT16"
+    }
+  ],
+  "ceb5483e-36e1-4688-b7f5-ea07361b26c0": [
+    {
+      "communication_mode": "WiFi",
+      "wifi_ssid": "MyWiFiNetwork",
+      "wifi_password": "MyWiFiPassword",
+      "protocol": "MQTT",
+      "server_name": "broker.hivemq.com",
+      "port": 1883,
+      "client_id": "ESP32Client",
+      "qos_level": 1,
+      "auth": true,
+      "mqtt_username": "mqtt_user",
+      "mqtt_password": "mqtt_pass",
+      "interval": 60
+    }
+  ],
+  "deb5483e-36e1-4688-b7f5-ea07361b26d1": [
+    {
+      "logged_data": [
+        "Temperature",
+        "Humidity"
+      ],
+      "protocol": "MQTT",
+      "logging_retention": 7776000,
+      "interval": 300
+    }
+  ]
+}
