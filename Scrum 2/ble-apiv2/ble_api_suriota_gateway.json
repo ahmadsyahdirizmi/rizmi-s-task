@@ -7,7 +7,7 @@
   },
   "tags": [
     {
-      "name": "Connection Devices",
+      "name": "Device Communications",
       "description": "UUID: beb5483e-36e1-4688-b7f5-ea07361b26a8"
     },
     {
@@ -15,7 +15,7 @@
       "description": "UUID: aeb5483e-36e1-4688-b7f5-ea07361b26b9"
     },
     {
-      "name": "Internet Configuration",
+      "name": "Server Configuration",
       "description": "UUID: ceb5483e-36e1-4688-b7f5-ea07361b26c0"
     },
     {
@@ -24,26 +24,27 @@
     }
   ],
   "paths": {
-    "/ble/connection_devices/read": {
+    "/ble/device_communications/read": {
       "get": {
-        "tags": ["Connection Devices"],
-        "summary": "Read Connection Devices",
-        "description": "Retrieve the current configuration of the connection devices.",
+        "tags": ["Device Communications"],
+        "summary": "Read Device Communications",
+        "description": "Retrieve the current configuration of the device communications.",
         "parameters": [
           {
             "in": "body",
             "name": "body",
-            "description": "If `connection_type` is `RTU`, then the following keys are required: baud rate, data bits, parity, and stop bits. If `connection_type` is `TCP/IP`, then the following keys are required: IP address, server port, connect timeout, and protocol version.",
+            "description": "If `communication_type` is `RTU`, then the following keys are required: baud rate, data bits, parity, and stop bits. If `communication_type` is `TCP/IP`, then the following keys are required: IP address, server port, connect timeout, and protocol version.",
             "required": true,
             "schema": {
               "type": "object",
               "example": {
                 "device_name": "Sensor Environment",
-                "connection_type": "RTU",
+                "communication_type": "RTU",
                 "baud_rate": 9600,
                 "bit_data": 8,
                 "parity": "N",
-                "stop_bit": 1
+                "stop_bit": 1,
+                "refresh_rate": 1000
               }
             }
           }
@@ -58,26 +59,27 @@
         }
       }
     },
-    "/ble/connection_devices/write": {
+    "/ble/device_communications/write": {
       "post": {
-        "tags": ["Connection Devices"],
-        "summary": "Write Connection Devices",
-        "description": "Send the connection devices configuration to the client.",
+        "tags": ["Device Communications"],
+        "summary": "Write Device Communications",
+        "description": "Send the device communications configuration to the client.",
         "parameters": [
           {
             "in": "body",
             "name": "body",
-            "description": "Connection devices configuration",
+            "description": "Device communications configuration",
             "required": true,
             "schema": {
               "type": "object",
               "properties": {
                 "device_name": {"type": "string"},
-                "connection_type": {"type": "string"},
+                "communication_type": {"type": "string"},
                 "baud_rate": {"type": "integer"},
                 "bit_data": {"type": "integer"},
                 "parity": {"type": "string"},
-                "stop_bit": {"type": "integer"}
+                "stop_bit": {"type": "integer"},
+                "refresh_rate": {"type": "integer"}
               }
             }
           }
@@ -104,7 +106,7 @@
           {
             "in": "body",
             "name": "body",
-            "description": "The value of `device_name` must match one of the device names listed in Connection Devices.",
+            "description": "The value of `device_name` must match one of the device names listed in Device Communications.",
             "required": true,
             "schema": {
               "type": "object",
@@ -112,7 +114,7 @@
                 "device_name": "Sensor Environment",
                 "slave_id": 1,
                 "function": "INPUT_REGISTERS",
-                "address": "0x0001",
+                "address": 4096,
                 "data_name": "Temperature",
                 "data_type": "INT16"
               }
@@ -146,7 +148,7 @@
                 "device_name": {"type": "string"},
                 "slave_id": {"type": "integer"},
                 "function": {"type": "string"},
-                "address": {"type": "string"},
+                "address": {"type": "integer"},
                 "data_name": {"type": "string"},
                 "data_type": {"type": "string"},
                 "value": {"type": "number"},
@@ -168,21 +170,21 @@
         }
       }
     },
-    "/ble/internet_config/read": {
+    "/ble/server_config/read": {
       "get": {
-        "tags": ["Internet Configuration"],
-        "summary": "Read Internet Config",
-        "description": "Retrieve the current configuration of the internet connection.",
+        "tags": ["Server Configuration"],
+        "summary": "Read Server Config",
+        "description": "Retrieve the current configuration of the server connection.",
         "parameters": [
           {
             "in": "body",
             "name": "body",
-            "description": "If `communication_mode` is `Ethernet`, no additional keys are required. If `communication_mode` is `TCP/IP`, then wifi ssid and wifi password are required.\n If `protocol` is `MQTT`, then then the following keys are required: server name, port, client id, and qos level. If server authentication is needed, mqtt username and mqtt password are also required.\n If `protocol` is `HTTP`, then server url (including access token) is required. If server authentication is needed, token bearer is also required.",
+            "description": "If `connection_type` is `Ethernet`, and `not automatic`, then IP address and MAC address are required. If `connection_type` is `WiFi`, then wifi ssid and wifi password are required.\n If `protocol` is `MQTT`, then then the following keys are required: server name, port, client id, and qos level. If server authentication is needed, mqtt username and mqtt password are also required.\n If `protocol` is `HTTP`, then server url (including access token) is required. If server authentication is needed, token bearer is also required.",
             "required": true,
             "schema": {
               "type": "object",
               "example": {
-                "communication_mode": "WiFi",
+                "connection_type": "WiFi",
                 "wifi_ssid": "MyWiFiNetwork",
                 "wifi_password": "MyWiFiPassword",
                 "protocol": "MQTT",
@@ -192,8 +194,7 @@
                 "qos_level": 1,
                 "auth": true,
                 "mqtt_username": "mqtt_user",
-                "mqtt_password": "mqtt_pass",
-                "interval": 60
+                "mqtt_password": "mqtt_pass"
               }
             }
           }
@@ -208,21 +209,21 @@
         }
       }
     },
-    "/ble/internet_config/write": {
+    "/ble/server_config/write": {
       "post": {
-        "tags": ["Internet Configuration"],
-        "summary": "Write Internet Config",
-        "description": "Send the Internet configuration to the client.",
+        "tags": ["Server Configuration"],
+        "summary": "Write Server Config",
+        "description": "Send the server configuration to the client.",
         "parameters": [
           {
             "in": "body",
             "name": "body",
-            "description": "Internet configuration",
+            "description": "Server configuration",
             "required": true,
             "schema": {
               "type": "object",
               "properties": {
-                "communication_mode": {"type": "string"},
+                "connection_type": {"type": "string"},
                 "ssid": {"type": "string"},
                 "wifi_password": {"type": "string"},
                 "protocol": {"type": "string"},
@@ -232,8 +233,7 @@
                 "qos_level": {"type": "integer"},
                 "auth": {"type": "boolean"},
                 "mqtt_username": {"type": "string"},
-                "mqtt_password": {"type": "string"},
-                "interval": {"type": "integer"}
+                "mqtt_password": {"type": "string"}
               }
             }
           }
@@ -266,7 +266,6 @@
               "type": "object",
               "example": {
                 "logged_data": ["Temperature", "Humidity"],
-                "protocol": "MQTT",
                 "logging_retention": 7776000,  
                 "interval": 300 
               }
@@ -301,7 +300,6 @@
                   "type": "array",
                   "items": {"type": "string"}
                 },
-                "protocol": {"type": "string"},
                 "logging_retention": {"type": "integer"},
                 "interval": {"type": "integer"}
               }
