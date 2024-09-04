@@ -40,7 +40,7 @@
       "qos_level": 1,
       "auth": true,
       "mqtt_username": "mqtt_user",
-      "mqtt_password": "mqtt_pass",
+      "mqtt_password": "mqtt_pass"
     }
   ],
   "deb5483e-36e1-4688-b7f5-ea07361b26d1": [
